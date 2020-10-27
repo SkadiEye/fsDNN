@@ -1,0 +1,14 @@
+Package: bfDNN
+Type: Package
+Title: BF-DNN
+Version: 1.0.0
+Author: Xinlei Mi
+Maintainer: Xinlei Mi <xm2231@cumc.columbia.edu>
+Description: A package for two-part DNN models
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+Imports: Rcpp (>= 0.12.17)
+Depends: R (>= 3.0.0), methods 
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 7.1.1
