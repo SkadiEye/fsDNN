@@ -4,11 +4,14 @@
 \alias{predict}
 \alias{predict,dnnet-method}
 \alias{predict,dnnetEnsemble-method}
+\alias{predict,twoPartDNN-method}
 \title{Predict function for the package}
 \usage{
 \S4method{predict}{dnnet}(object, newData, type, ...)
 
 \S4method{predict}{dnnetEnsemble}(object, newData, type, ...)
+
+\S4method{predict}{twoPartDNN}(object, newData, ...)
 }
 \arguments{
 \item{object}{A \code{dnnet} or \code{dnnetEnsemble} object.}

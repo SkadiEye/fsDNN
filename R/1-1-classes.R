@@ -68,3 +68,20 @@ setClass("dnnetEnsemble",
            keep = "ANY"
          ))
 
+#################################
+#### twoPartDNN class
+#' An S4 class containing a twoPartDNN object
+#'
+#' @slot model.cls A binary classification ensemble DNN model
+#' @slot model.reg A regression ensemble DNN model
+#'
+#' @seealso
+#' \code{\link{dnnet-class}}\cr
+#' \code{\link{ensemble_dnnet}}\cr
+#' @export
+setClass("twoPartDNN",
+         slots = list(
+           model.cls = "dnnetEnsemble",
+           model.reg = "dnnetEnsemble"
+         ))
+

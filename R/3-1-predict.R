@@ -166,3 +166,18 @@ setMethod("predict",
               return(pred.avg)
             }
           })
+
+###########################################################
+### Predict using twoPartDNN objects
+
+#' @rdname predict
+#' @export
+setMethod("predict",
+          "twoPartDNN",
+          function(object, newData, ...) {
+
+            pred1 <- predict(object@model.cls, newData)[, "NonZero"]
+            pred2 <- predict(object@model.reg, newData)
+            cbind(cls = pred1, reg = pred2, combined = pred1*pred2)
+          })
+
