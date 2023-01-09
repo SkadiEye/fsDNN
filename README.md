@@ -1,4 +1,4 @@
-bfDNN
+fsDNN
 ================
 
 ## Installation
@@ -6,13 +6,13 @@ bfDNN
 In R:
 
 ``` r
-devtools::install_github("SkadiEye/bfDNN")
+devtools::install_github("SkadiEye/fsDNN")
 ```
 
 ## Example
 
 ``` r
-suppressMessages(library(bfDNN))
+suppressMessages(library(fsDNN))
 library(ROCR)
 data("example_dat")
 

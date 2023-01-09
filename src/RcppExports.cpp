@@ -6,9 +6,14 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // backprop
 SEXP backprop(NumericVector n_hidden, double w_ini, bool load_param, List weight, List bias, NumericMatrix x, NumericMatrix y, NumericVector w, bool valid, NumericMatrix x_valid, NumericVector y_valid, NumericVector w_valid, std::string activ, int n_epoch, int n_batch, std::string model_type, double learning_rate, double l1_reg, double l2_reg, bool early_stop, int early_stop_det, std::string learning_rate_adaptive, double rho, double epsilon, double beta1, double beta2, std::string loss_f);
-RcppExport SEXP _bfDNN_backprop(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
+RcppExport SEXP _fsDNN_backprop(SEXP n_hiddenSEXP, SEXP w_iniSEXP, SEXP load_paramSEXP, SEXP weightSEXP, SEXP biasSEXP, SEXP xSEXP, SEXP ySEXP, SEXP wSEXP, SEXP validSEXP, SEXP x_validSEXP, SEXP y_validSEXP, SEXP w_validSEXP, SEXP activSEXP, SEXP n_epochSEXP, SEXP n_batchSEXP, SEXP model_typeSEXP, SEXP learning_rateSEXP, SEXP l1_regSEXP, SEXP l2_regSEXP, SEXP early_stopSEXP, SEXP early_stop_detSEXP, SEXP learning_rate_adaptiveSEXP, SEXP rhoSEXP, SEXP epsilonSEXP, SEXP beta1SEXP, SEXP beta2SEXP, SEXP loss_fSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -45,11 +50,11 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_bfDNN_backprop", (DL_FUNC) &_bfDNN_backprop, 27},
+    {"_fsDNN_backprop", (DL_FUNC) &_fsDNN_backprop, 27},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_bfDNN(DllInfo *dll) {
+RcppExport void R_init_fsDNN(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
