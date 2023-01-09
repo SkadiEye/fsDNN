@@ -1,6 +1,6 @@
 Package: fsDNN
 Type: Package
-Title: BF-DNN
+Title: fsDNN
 Version: 1.0.0
 Author: Xinlei Mi
 Maintainer: Xinlei Mi <xinlei.mi@northwestern.edu>
