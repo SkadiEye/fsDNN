@@ -378,6 +378,11 @@ SEXP backprop(NumericVector n_hidden, double w_ini,
         dalpha = -sum(sum(-(1 - yi_.col(0)) % ksi_ % (-aaa + bbb) +
           yi_.col(0) % (-(y_plus_alpha_inv.transform([](double x){return(R::digamma(x));}) -
           R::digamma(1/negbin_alpha))/negbin_alpha + aaa + (yi_.col(1) / lambda_ - 1) % bbb)));
+      } else if(loss_f == "relu-output") {
+
+        // d_a(n_layer) = -(yi_ - y_pi) % wi_ / sum(wi_);
+        y_pi = y_pi % (y_pi > 0);
+        d_a(n_layer) = -(yi_ - y_pi) % (wi_ * one_dim_y.t()) / sum(wi_);
       } else {
 
         // d_a(n_layer) = -(yi_ - y_pi) % wi_ / sum(wi_);
@@ -631,6 +636,10 @@ SEXP backprop(NumericVector n_hidden, double w_ini,
           y_valid_.col(0) % (log(pi_) + y_plus_alpha_inv.transform([](double x){return(lgamma(x));}) -
           lgamma(1/negbin_alpha) + y_valid_.col(1)%(log_negbin_alpha + y_pred.col(1) -
           log(one_plus_alpha_l)))) % w_valid_) / sum(w_valid_);
+      } else if(loss_f == "relu-output") {
+
+        y_pred = y_pred % (y_pred > 0);
+        loss[k] = sum(w_valid_ % sum(pow(y_valid_ - y_pred, 2), 1)) / sum(w_valid_);
       }
 
       if(!is_finite(loss[k])) {

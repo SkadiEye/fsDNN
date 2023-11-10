@@ -97,6 +97,13 @@ setMethod("predict",
                            exp(pred[, 2]*object@norm$y.scale + object@norm$y.center)))
             }
 
+            if(object@model.type == "relu-output") {
+              pred <- (pred %*% object@weight[[n.layer + 1]] + one_sample_size %*% object@bias[[n.layer + 1]])[, 1]
+              pred <- ifelse(pred > 0, pred, 0)
+              sample.size <- dim(pred)[1]
+              return(pred*object@norm$y.scale + object@norm$y.center)
+            }
+
             pred <- (pred %*% object@weight[[n.layer + 1]] + one_sample_size %*% object@bias[[n.layer + 1]])[, 1]
             return(pred*object@norm$y.scale + object@norm$y.center)
           })

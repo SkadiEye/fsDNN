@@ -10,10 +10,10 @@ dnnet(
   load.param = FALSE,
   initial.param = NULL,
   family = c("gaussin", "binomial", "multinomial", "poisson", "negbin", "coxph",
-    "poisson-nonzero", "negbin-nonzero", "zip", "zinb")[1],
+    "poisson-nonzero", "negbin-nonzero", "zip", "zinb", "relu-output")[1],
   norm.x = TRUE,
   norm.y = ifelse(is.factor(train@y) || (class(train) == "dnnetSurvInput") || (family
-    \%in\% c("poisson", "poisson-nonzero", "zip", "zinb")), FALSE, TRUE),
+    \%in\% c("poisson", "poisson-nonzero", "zip", "zinb", "relu-output")), FALSE, TRUE),
   activate = "relu",
   n.hidden = c(10, 10),
   learning.rate = ifelse(learning.rate.adaptive \%in\% c("adam"), 0.001, 0.01),

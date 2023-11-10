@@ -13,6 +13,7 @@
 #' @export
 neg_log_lik_ <- function(model.type, y, y_hat, alpha = NULL) {
   if(model.type == "regression") return((y - y_hat)**2)
+  if(model.type == "relu-output") return((y - y_hat)**2)
   if(model.type == "binary-classification") return(-(y*log(y_hat) + (1-y)*log(1-y_hat)))
   if(model.type == "poisson") return(-(y*log(y_hat) - y_hat))
   if(model.type == "poisson-nonzero") return(-(y*log(y_hat) - y_hat - log(1 - exp(-y_hat))))
